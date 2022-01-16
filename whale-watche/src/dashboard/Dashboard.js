@@ -85,17 +85,49 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme();
 
 // import logo from "./logo.png";
-class CryptoWalletTracker extends React.Component {
+class CryptoWalletTracker extends React.Component{
   constructor(props) {
     super(props);
-    this.state = { value: '', apidata: '', image: 'https://logos.covalenthq.com/tokens/1/0xb8c77482e45f1f44de1745f52c74426c631bdd52.png'};
-    
+    this.state = {value: '', image:'https://logos.covalenthq.com/tokens/1/0xb8c77482e45f1f44de1745f52c74426c631bdd52.png' }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  handleChange(e) {
+    this.props.handleWalletChange(e.target.value);
+    this.setState({value: e.target.value});
+  }
 
-  handleSubmit(event) {
+  handleSubmit(e) {
+    this.props.handleAddressSubmit(e);
+  }
+
+  render() {
+    return (
+      <div>
+        <img className="logo" src={this.state.image} height="20px" width="20px" alt="Coin" />
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Wallet Address:
+            <input type="text" name="address" value={this.state.value} onChange={this.handleChange} />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    );
+  }
+}
+
+class DashboardContent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleAddressSubmit = this.handleAddressSubmit.bind(this);
+    this.toggleDrawer = this.toggleDrawer.bind(this);
+    this.handleWalletChange = this.handleWalletChange.bind(this);
+    this.state = { open: true, value: '', apidata: ''};
+  }
+
+  handleAddressSubmit(e){
     //alert('A name was submitted: ' + this.state.value);
     //console.log('https://api.covalenthq.com/v1/1/address/' + this.state.value + '/balances_v2/?&key=ckey_dc5027f0ba21436ab4bd0ae837a:')
     //fetch('https://api.covalenthq.com/v1/1/transaction_v2/0xbda92389200cadac424d64202caeab70cd5e93756fe34c08578adeb310bba254/?key=ckey_dc5027f0ba21436ab4bd0ae837a:')
@@ -107,170 +139,102 @@ class CryptoWalletTracker extends React.Component {
 
 
     //https://api.covalenthq.com/v1/1/address/0xfc811061134fa6ccfd22f56cc91bf6450bea2d01/transactions_v2/?&key=ckey_dc5027f0ba21436ab4bd0ae837a:
+    // works: fetch('https://api.covalenthq.com/v1/1/address/' + this.state.value + '/transactions_v2/?&key=ckey_dc5027f0ba21436ab4bd0ae837a:')
     fetch('https://api.covalenthq.com/v1/1/address/' + this.state.value + '/balances_v2/?&key=ckey_dc5027f0ba21436ab4bd0ae837a:')
     .then((res) => res.json())
     .then((json) => {
       console.log(json);
-      console.log(json.data.items[5].logo_url);
-      this.setState({ apidata: json, image: json.data.items[2].logo_url});
+      this.setState({ apidata: json }); //image: json.data.items[2].logo_url}
     });
-    event.preventDefault();
+    e.preventDefault();
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  handleWalletChange(value) {
+    this.setState({value: value});
   }
+
+  toggleDrawer() {
+    this.setState({ open: !this.state.open });
+  }
+
+  
+
   
   render() {
     return (
-      <div>
-        {/* <img className="whale-logo" src={require(/whale-watche/src/dashboard/logo.jpg)} alt="Large" /> */}
-        <img className="logo" src={this.state.image} height="20px" width="20px" alt="Coin" />
-        <form onSubmit={this.handleSubmit}>
-        <label>
-          Wallet Address:
-          <input type="text" name="address" value={this.state.value} onChange={this.handleChange}/>
-        </label>
-        <input type="submit" value="Submit" />
-
-      </form>
-      </div>
-      
-
+      <ThemeProvider theme={mdTheme}>
+        <Box sx={{ display: 'flex' }}>
+          <CssBaseline />
+  
+          <Box
+            component="main"
+            sx={{
+              backgroundColor: (theme) =>
+                theme.palette.mode === 'light'
+                  ? theme.palette.grey[100]
+                  : theme.palette.grey[900],
+              flexGrow: 1,
+              height: '100vh',
+              overflow: 'auto',
+            }}
+          >
+            <Toolbar />
+            <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+              <Grid container spacing={3}>
+                {/* Chart */}
+                <Grid item xs={12} md={8} lg={9}>
+                  <Paper
+                    sx={{
+                      p: 2,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      height: 240,
+                    }}
+                  >
+                    <Chart />
+                  </Paper>
+                </Grid>
+                {/* Recent Deposits */}
+                <Grid item xs={12} md={4} lg={3}>
+                  <Paper
+                    sx={{
+                      p: 2,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      height: 240,
+                    }}
+                  >
+                    <Deposits />
+                  </Paper>
+                </Grid>
+                {/* ==============================================================~~~~~~~~~~~~~~~~~~~~~ */}
+              
+                {/* Recent Orders */}
+                <Grid item xs={12} md={4} lg={3}>
+                  <Paper
+                    sx={{
+                      p: 2,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      height: 240,
+                    }}
+                  >
+                    <CryptoWalletTracker handleAddressSubmit={this.handleAddressSubmit} handleWalletChange={this.handleWalletChange}/>
+                  </Paper>
+                </Grid>
+                <Grid item xs={12}>
+                  <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                    <Orders data={this.state.apidata}/>
+                  </Paper>
+                </Grid>
+              </Grid>
+              <Copyright sx={{ pt: 4 }} />
+            </Container>
+          </Box>
+        </Box>
+      </ThemeProvider>
     );
   }
-}
-
-function DashboardContent() {
-  const [open, setOpen] = React.useState(true);
-  const toggleDrawer = () => {
-    setOpen(!open);
-  };
-
-  return (
-    <ThemeProvider theme={mdTheme}>
-      <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
-        <AppBar position="absolute" open={open}>
-          <Toolbar
-            sx={{
-              pr: '24px', // keep right padding when drawer closed
-            }}
-          >
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              onClick={toggleDrawer}
-              sx={{
-                marginRight: '36px',
-                ...(open && { display: 'none' }),
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
-              noWrap
-              sx={{ flexGrow: 1 }}
-            >
-              Dashboard
-            </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-        <Drawer variant="permanent" open={open}>
-          <Toolbar
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-              px: [1],
-            }}
-          >
-            <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </Toolbar>
-          <Divider />
-          <List>{mainListItems}</List>
-          <Divider />
-          <List>{secondaryListItems}</List>
-        </Drawer>
-        <Box
-          component="main"
-          sx={{
-            backgroundColor: (theme) =>
-              theme.palette.mode === 'light'
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
-            flexGrow: 1,
-            height: '100vh',
-            overflow: 'auto',
-          }}
-        >
-          <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              {/* Chart */}
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <Chart />
-                </Paper>
-              </Grid>
-              {/* Recent Deposits */}
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <Deposits />
-                </Paper>
-              </Grid>
-              {/* ==============================================================~~~~~~~~~~~~~~~~~~~~~ */}
-              
-              {/* Recent Orders */}
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <CryptoWalletTracker /> 
-                </Paper>
-              </Grid>
-              <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Orders />
-                </Paper>
-              </Grid>
-            </Grid>
-            <Copyright sx={{ pt: 4 }} />
-          </Container>
-        </Box>
-      </Box>
-    </ThemeProvider>
-  );
 }
 
 export default function Dashboard() {
