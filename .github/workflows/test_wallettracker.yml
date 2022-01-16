@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'WalletTracker'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_ED62CEC2E93D4BEE8090AFAC36004400 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3B055038312849CFA0167CD263066564 }}
           package: .
