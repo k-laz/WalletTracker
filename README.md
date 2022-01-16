@@ -1,8 +1,15 @@
 # WalletTracker (nwHacks 2022)
 
+## About
 Are you a crypto enthusiast and want to see what celebrities are buying in real time? This application is perfect for you! We have made WalletTracker, a simple web application used to track crypto wallets and their recent transactions, works with anyone’s wallet if you know their address. 
 
-Built in React.js and Covalent API
+## Built With
+* [React.js](https://reactjs.org/)
+* [Covalent API](https://www.covalenthq.com/docs/api/#/)
+
+## Contributors
+* [Kirill Lazarev](https://github.com/k-laz)
+* [Pavan Khiani](https://github.com/pkhiani)
 
 ## Available Scripts
 
@@ -40,3 +47,8 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Roadmap
+1. Turn into executable file that can run in background on startup
+
+View project demo on [YouTube](https://youtu.be/Q0yuIUShX90)
