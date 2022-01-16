@@ -19,7 +19,7 @@ export default function TokenBalanceTable(props) {
             <TableRow>
               <TableCell>Contract Name</TableCell>
               <TableCell>Contract Address</TableCell>
-              <TableCell>Quote</TableCell>
+              <TableCell>Quote (USD)</TableCell>
               <TableCell align="right">Balance</TableCell>
             </TableRow>
           </TableHead>
