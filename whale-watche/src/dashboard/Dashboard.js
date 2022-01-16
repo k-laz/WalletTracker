@@ -22,6 +22,7 @@ import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
 
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -82,6 +83,63 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 const mdTheme = createTheme();
+
+// import logo from "./logo.png";
+class CryptoWalletTracker extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { value: '', apidata: '', image: 'https://logos.covalenthq.com/tokens/1/0xb8c77482e45f1f44de1745f52c74426c631bdd52.png'};
+    
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+
+  handleSubmit(event) {
+    //alert('A name was submitted: ' + this.state.value);
+    //console.log('https://api.covalenthq.com/v1/1/address/' + this.state.value + '/balances_v2/?&key=ckey_dc5027f0ba21436ab4bd0ae837a:')
+    //fetch('https://api.covalenthq.com/v1/1/transaction_v2/0xbda92389200cadac424d64202caeab70cd5e93756fe34c08578adeb310bba254/?key=ckey_dc5027f0ba21436ab4bd0ae837a:')
+    //fetch('https://api.covalenthq.com/v1/1/address/demo.eth/balances_v2/?&key=ckey_dc5027f0ba21436ab4bd0ae837a:')
+    //portfolio_v2/  -- Get historical portfolio value over time
+    //https://api.covalenthq.com/v1/1/tokens/0xfc811061134fa6ccfd22f56cc91bf6450bea2d01/nft_transactions/123/
+
+    //https://api.covalenthq.com/v1/1/address/0xa79E63e78Eec28741e711f89A672A4C40876Ebf3/transactions_v2/?&key=ckey_dc5027f0ba21436ab4bd0ae837a:
+
+
+    //https://api.covalenthq.com/v1/1/address/0xfc811061134fa6ccfd22f56cc91bf6450bea2d01/transactions_v2/?&key=ckey_dc5027f0ba21436ab4bd0ae837a:
+    fetch('https://api.covalenthq.com/v1/1/address/' + this.state.value + '/balances_v2/?&key=ckey_dc5027f0ba21436ab4bd0ae837a:')
+    .then((res) => res.json())
+    .then((json) => {
+      console.log(json);
+      console.log(json.data.items[5].logo_url);
+      this.setState({ apidata: json, image: json.data.items[2].logo_url});
+    });
+    event.preventDefault();
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+  
+  render() {
+    return (
+      <div>
+        {/* <img className="whale-logo" src={require(/whale-watche/src/dashboard/logo.jpg)} alt="Large" /> */}
+        <img className="logo" src={this.state.image} height="20px" width="20px" alt="Coin" />
+        <form onSubmit={this.handleSubmit}>
+        <label>
+          Wallet Address:
+          <input type="text" name="address" value={this.state.value} onChange={this.handleChange}/>
+        </label>
+        <input type="submit" value="Submit" />
+
+      </form>
+      </div>
+      
+
+    );
+  }
+}
 
 function DashboardContent() {
   const [open, setOpen] = React.useState(true);
@@ -186,7 +244,21 @@ function DashboardContent() {
                   <Deposits />
                 </Paper>
               </Grid>
+              {/* ==============================================================~~~~~~~~~~~~~~~~~~~~~ */}
+              
               {/* Recent Orders */}
+              <Grid item xs={12} md={4} lg={3}>
+                <Paper
+                  sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: 240,
+                  }}
+                >
+                  <CryptoWalletTracker /> 
+                </Paper>
+              </Grid>
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
                   <Orders />

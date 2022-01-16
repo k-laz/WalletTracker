@@ -8,14 +8,13 @@ import TableRow from '@mui/material/TableRow';
 import Title from './Title';
 
 // Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, amount) {
-  return { id, date, name, shipTo, paymentMethod, amount };
+function createData(date, name, shipTo, paymentMethod, amount) {
+  return { date, name, shipTo, paymentMethod, amount };
 }
 
 const rows = [
   createData(
-    0,
-    '16 Mar, 2019',
+    'Name',
     'Elvis Presley',
     'Tupelo, MS',
     'VISA ⠀•••• 3719',
@@ -52,17 +51,36 @@ function preventDefault(event) {
   event.preventDefault();
 }
 
-export default function Orders() {
+// class WalletTransactions extends React.Component {
+//   handleSubmit(event) {
+//     fetch('https://api.covalenthq.com/v1/1/address/' + this.state.value + '/transactions_v2/?&key=ckey_dc5027f0ba21436ab4bd0ae837a:')
+//     .then((res) => res.json())
+//     .then((json) => {
+//       console.log(json);
+//       this.setState({ apidata: json, image: json.data.items.logo_url});
+//     });
+//     event.preventDefault();
+//   }
+
+//   handleChange(event) {
+//     this.setState({value: event.target.value});
+//   }
+
+//   render() {
+    
+//   }
+// }
+
+export default function Orders(props) {
   return (
     <React.Fragment>
-      <Title>Recent Orders</Title>
+      <Title>Recent Transactions</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell>Date</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Ship To</TableCell>
-            <TableCell>Payment Method</TableCell>
+            <TableCell>NFT</TableCell>
+            <TableCell>Collection</TableCell>
             <TableCell align="right">Sale Amount</TableCell>
           </TableRow>
         </TableHead>
@@ -72,7 +90,6 @@ export default function Orders() {
               <TableCell>{row.date}</TableCell>
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.shipTo}</TableCell>
-              <TableCell>{row.paymentMethod}</TableCell>
               <TableCell align="right">{`$${row.amount}`}</TableCell>
             </TableRow>
           ))}
