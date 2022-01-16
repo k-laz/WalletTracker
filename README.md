@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# WalletTracker (nwHacks 2022)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Are you a crypto enthusiast and want to see what celebrities are buying in real time? This application is perfect for you! We have made WalletTracker, a simple web application used to track crypto wallets and their recent transactions, works with anyone’s wallet if you know their address. 
+
+Built in React.js and Covalent API
 
 ## Available Scripts
 
