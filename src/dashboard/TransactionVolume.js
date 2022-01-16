@@ -1,8 +1,6 @@
 import * as React from "react";
-import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import Title from "./Title";
-var FontAwesome = require("react-fontawesome");
 
 export default function TransactionVolume(props) {
   const current = new Date();
