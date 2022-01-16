@@ -1,55 +1,45 @@
-import * as React from 'react';
-import Link from '@mui/material/Link';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Title from './Title';
+import * as React from "react";
+import Link from "@mui/material/Link";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Title from "./Title";
 
-function preventDefault(event) {
-  event.preventDefault();
-}
-
-export default function Orders(props) {
+export default function TokenBalanceTable(props) {
   console.log(props.data.data);
 
-if (props.data.data) {
-  return (
-    <React.Fragment>
-      <Title>Recent Transactions</Title>
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            <TableCell>Contract Name</TableCell>
-            <TableCell>Contract Address</TableCell>
-            <TableCell>Quote</TableCell>
-            <TableCell align="right">Balance</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {props.data.data.items.map((item, index) => (
-            <TableRow key={index}>
-              <TableCell>{item.contract_name}</TableCell>
-              <TableCell>{item.contract_address}</TableCell>
-              <TableCell>{item.quote}</TableCell>
-              <TableCell align="right">{`$${item.balance}`}</TableCell>
+  if (props.data.data) {
+    return (
+      <React.Fragment>
+        <Title>Token Balances</Title>
+        <Table size="small">
+          <TableHead>
+            <TableRow>
+              <TableCell>Contract Name</TableCell>
+              <TableCell>Contract Address</TableCell>
+              <TableCell>Quote</TableCell>
+              <TableCell align="right">Balance</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-      <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
-        See more orders
-      </Link>
-    </React.Fragment>
-  );
+          </TableHead>
+          <TableBody>
+            {props.data.data.items.map((item, index) => (
+              <TableRow key={index}>
+                <TableCell>{item.contract_name}</TableCell>
+                <TableCell>{item.contract_address}</TableCell>
+                <TableCell>{item.quote}</TableCell>
+                <TableCell align="right">{item.balance}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </React.Fragment>
+    );
   } else {
-    return <div> No Data, please input a wallet address</div>
+    return <div> No Data, please input a wallet address</div>;
   }
-
 }
-
-
 
 // export default function Orders(props) {
 //   console.log(props.data.items);

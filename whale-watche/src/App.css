@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.walletAddressForm {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  margin: auto;
+}
+
+.transactionCard {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: auto;
+}
