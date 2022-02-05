@@ -13,6 +13,8 @@ Are you a crypto enthusiast and want to see what celebrities are buying in real 
 
 View project demo on [YouTube](https://youtu.be/Q0yuIUShX90)
 
+Live demo on [Netlify](https://optimistic-hypatia-322579.netlify.app/)
+
 ## Available Scripts
 
 In the project directory, you can run:
