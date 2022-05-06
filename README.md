@@ -1,5 +1,7 @@
 # WalletTracker (nwHacks 2022)
 
+![image](https://user-images.githubusercontent.com/56948805/167064016-a5ad27cf-13bf-478c-9973-be224c32c792.png)
+
 ## About
 Are you a crypto enthusiast and want to see what celebrities are buying in real time? This application is perfect for you! We have made WalletTracker, a simple web application used to track crypto wallets and their recent transactions, works with anyone’s wallet if you know their address. 
 
