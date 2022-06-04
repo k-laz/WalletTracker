@@ -90,7 +90,7 @@ class DashboardContent extends React.Component {
     fetch(
       "https://api.covalenthq.com/v1/1/address/" +
         this.state.value +
-        "/balances_v2/?&key=ckey_dc5027f0ba21436ab4bd0ae837a:"
+        "/balances_v2/?&key=" + jobs.env.API_KEY
     )
       .then((res) => res.json())
       .then((json) => {
@@ -101,7 +101,7 @@ class DashboardContent extends React.Component {
     fetch(
       "https://api.covalenthq.com/v1/1/address/" +
         this.state.value +
-        "/transactions_v2/?&key=ckey_dc5027f0ba21436ab4bd0ae837a:"
+        "/transactions_v2/?&key=" + jobs.env.API_KEY
     )
       .then((res) => res.json())
       .then((json) => {
