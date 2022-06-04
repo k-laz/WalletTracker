@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - WalletTracker
+name: Build and deploy Node.js app
 
 on:
   push:
@@ -47,12 +47,3 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: node-app
-
-      - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: 'WalletTracker'
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FC7B0F76175E4136B69BF63BD85AE73E }}
-          package: .
