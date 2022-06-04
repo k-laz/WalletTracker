@@ -22,7 +22,7 @@ Are you a crypto enthusiast and want to see what celebrities are buying in real 
 
 View project demo on [YouTube](https://youtu.be/Q0yuIUShX90)
 
-Live demo on [Netlify](https://optimistic-hypatia-322579.netlify.app/)
+Live demo on [Netlify](https://cryptowallettracker.netlify.app/)
 
 ## Contributors
 * [Kirill Lazarev](https://github.com/k-laz)
