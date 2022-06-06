@@ -18,8 +18,6 @@ Are you a crypto enthusiast and want to see what celebrities are buying in real 
 * [JavaScript](https://www.javascript.com/)
 * [Covalent API](https://www.covalenthq.com/docs/api/#/)
 
-<img align="center" src="https://user-images.githubusercontent.com/56948805/167064016-a5ad27cf-13bf-478c-9973-be224c32c792.png" alt="logo2" width="400" height="250">
-
 View project demo on [YouTube](https://youtu.be/Q0yuIUShX90)
 
 Live demo on [Netlify](https://cryptowallettracker.netlify.app/)
