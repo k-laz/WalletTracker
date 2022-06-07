@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { validWallet } from "../tools/WalletValidator";
 
 const Input = ({ setAddress }) => {
   const [input, setInput] = useState("");
@@ -80,10 +81,6 @@ const Input = ({ setAddress }) => {
     </div>
   );
 };
-
-function validWallet(walletAddress) {
-  return true;
-}
 
 export default Input;
 

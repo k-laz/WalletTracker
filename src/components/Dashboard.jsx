@@ -6,7 +6,7 @@ const Dashboard = () => {
   const [address, setAddress] = useState("");
 
   if (address !== "") {
-    return <InfoTable address={address} />;
+    return <InfoTable address={address} setAddress={setAddress} />;
   } else {
     return <Input address={address} setAddress={setAddress} />;
   }
