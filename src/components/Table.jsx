@@ -5,29 +5,29 @@ const Table = () => {
         <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
           <div class="overflow-hidden">
             <table class="min-w-full">
-              <thead class="bg-white border-b">
+              <thead class="bg-white border-b text-xl">
                 <tr>
                   <th
                     scope="col"
-                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                    class="font-medium text-gray-900 px-6 py-4 text-left"
                   >
                     #
                   </th>
                   <th
                     scope="col"
-                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                    class="font-medium text-gray-900 px-6 py-4 text-left"
                   >
                     First
                   </th>
                   <th
                     scope="col"
-                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                    class="font-medium text-gray-900 px-6 py-4 text-left"
                   >
                     Last
                   </th>
                   <th
                     scope="col"
-                    class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
+                    class="font-medium text-gray-900 px-6 py-4 text-left"
                   >
                     Handle
                   </th>

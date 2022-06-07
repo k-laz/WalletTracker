@@ -14,12 +14,12 @@ const WalletInfoCard = ({ address, setAddress }) => {
   };
 
   return (
-    <div class="flex justify-center">
-      <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
-        <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">
-          Transaction Volume
+    <div class="flex justify-center items-center w-full h-full bg-white shadow-lg rounded-lg">
+      <div class="block p-6">
+        <h5 class="text-gray-900 text-xl leading-tight font-medium mb-5 text-center">
+          Change Wallet Address
         </h5>
-        <p class="text-gray-700 text-base mb-4">{address}</p>
+        <p class="text-gray-700 text-base mb-5 text-center">{address}</p>
         <form className="flex flex-col justify-center mb-3 xl:w-96">
           <input
             type="text"
@@ -50,9 +50,6 @@ const WalletInfoCard = ({ address, setAddress }) => {
             id="exampleText0"
             placeholder="address input (ex: 0x...)"
           />
-          <p className="invisible peer-invalid:visible text-red-500 text-center">
-            Please provide a valid etherium address.
-          </p>
           <button
             type="button"
             value="Submit"

@@ -14,13 +14,13 @@ const TransactionVolumeCard = ({ data }) => {
     //   }
     // }
     return (
-      <div class="flex justify-center">
-        <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
-          <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">
+      <div className="flex justify-center items-center w-full h-full bg-white shadow-lg rounded-lg text-xl">
+        <div className="block">
+          <p className="text-gray-900 leading-tight font-medium text-center mb-5">
             Transaction Volume
-          </h5>
-          <p class="text-gray-700 text-base mb-4">{volume.toFixed(4)}</p>
-          <p>{date}</p>
+          </p>
+          <p className="text-gray-700 mb-5 text-center">{volume.toFixed(4)}</p>
+          <p className="text-center">{date}</p>
         </div>
       </div>
     );
