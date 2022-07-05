@@ -1,82 +1,70 @@
-const Table = () => {
-  return (
-    <div className="flex flex-col">
-      <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-          <div className="overflow-hidden">
-            <table className="min-w-full">
-              <thead className="bg-white border-b text-xl">
-                <tr>
-                  <th className="font-medium text-gray-900 px-6 py-4 text-left">
-                    #
-                  </th>
-                  <th
-                    scope="col"
-                    className="font-medium text-gray-900 px-6 py-4 text-left"
-                  >
-                    First
-                  </th>
-                  <th
-                    scope="col"
-                    className="font-medium text-gray-900 px-6 py-4 text-left"
-                  >
-                    Last
-                  </th>
-                  <th
-                    scope="col"
-                    className="font-medium text-gray-900 px-6 py-4 text-left"
-                  >
-                    Handle
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="bg-gray-100 border-b">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    1
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    Mark
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    Otto
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    @mdo
-                  </td>
-                </tr>
-                <tr className="bg-white border-b">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    2
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    Jacob
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    Thornton
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    @fat
-                  </td>
-                </tr>
-                <tr className="bg-gray-100 border-b">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    3
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-center">
-                    Larry the Bird
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    @twitter
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+const Table = ({ data }) => {
+  const Row = ({ key, contract, balance, quote }) => (
+    <tr className="bg-white border-b">
+      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+        {key}
+      </td>
+      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+        {contract}
+      </td>
+      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+        {balance}
+      </td>
+      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+        {quote}
+      </td>
+    </tr>
+  );
+
+  if (data) {
+    return (
+      <div className="flex flex-col">
+        <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+            <div className="overflow-hidden">
+              <table className="min-w-full">
+                <thead className="bg-white border-b text-xl">
+                  <tr>
+                    <th className="font-medium text-gray-900 px-6 py-4 text-left">
+                      #
+                    </th>
+                    <th
+                      scope="col"
+                      className="font-medium text-gray-900 px-6 py-4 text-left"
+                    >
+                      Contract
+                    </th>
+                    <th
+                      scope="col"
+                      className="font-medium text-gray-900 px-6 py-4 text-left"
+                    >
+                      Balance
+                    </th>
+                    <th
+                      scope="col"
+                      className="font-medium text-gray-900 px-6 py-4 text-left"
+                    >
+                      Quote
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.map((item, index) => (
+                    <Row
+                      key={index}
+                      contract={item.contract}
+                      balance={item.balance}
+                      quote={item.quote}
+                    />
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default Table;

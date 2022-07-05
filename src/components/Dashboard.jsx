@@ -14,7 +14,7 @@ const Dashboard = () => {
       fetch(
         "https://api.covalenthq.com/v1/1/address/" +
           address +
-          `/balances_v2/?&key=${api_key}`
+          `/portfolio_v2/?&key=${api_key}`
       )
         .then((response) => {
           if (!response.ok) {
