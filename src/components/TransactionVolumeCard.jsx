@@ -7,12 +7,12 @@ const TransactionVolumeCard = ({ data }) => {
   }/${current.getFullYear()}`;
 
   if (data) {
-    // const items = data.data.items;
-    // for (let i = 0; i < items.length; i++) {
-    //   if (items[i].block_signed_at.slice(8, 10) === `${current.getDate()}`) {
-    //     volume += items[i].value_quote;
-    //   }
-    // }
+    const items = data.data.items;
+    for (let item of items) {
+      if (item.block_signed_at.slice(8, 10) === `${current.getDate()}`) {
+        volume += item.value_quote;
+      }
+    }
     return (
       <div className="flex justify-center items-center w-full h-full bg-white shadow-lg rounded-lg text-xl">
         <div className="block">
