@@ -1,6 +1,6 @@
 const Table = ({ data }) => {
   const Row = ({ key, contract, balance, quote }) => (
-    <tr className="bg-white border-b">
+    <tr className="bg-white border-b overflow-y-auto">
       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
         {key}
       </td>
@@ -19,9 +19,8 @@ const Table = ({ data }) => {
   if (data) {
     return (
       <div className="flex flex-col">
-        <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div className="overflow-y-auto sm:-mx-6 lg:-mx-8 scroll-smooth">
           <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-            <div className="overflow-hidden">
               <table className="min-w-full">
                 <thead className="bg-white border-b text-xl">
                   <tr>
@@ -52,14 +51,13 @@ const Table = ({ data }) => {
                   {data.map((item, index) => (
                     <Row
                       key={index}
-                      contract={item.contract}
+                      contract={item.contract_name}
                       balance={item.balance}
                       quote={item.quote}
                     />
                   ))}
                 </tbody>
               </table>
-            </div>
           </div>
         </div>
       </div>

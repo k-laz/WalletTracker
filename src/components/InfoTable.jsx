@@ -7,8 +7,8 @@ const InfoTable = ({ address, setAddress, balanceData }) => {
     const items = balanceData.data.items;
     let tableItems = [];
     for (let item in items) {
-      let decimals = items[item].contract_decimals;
-      tableItems.push({
+        let decimals = items[item].contract_decimals;
+        tableItems.push({
         contract_name: items[item].contract_name,
         balance: items[item].holdings[0].close.balance / Math.pow(10, decimals),
         quote: items[item].holdings[0].close.quote,
