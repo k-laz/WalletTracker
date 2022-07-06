@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { validWallet } from "../tools/WalletValidator";
 
-const WalletInfoCard = ({ address, setAddress }) => {
+const WalletInfoCard = ({ address, setAddress, setLoading }) => {
   const [input, setInput] = useState("");
 
   const handleSubmit = (e) => {
+    setLoading(true);
     e.preventDefault();
     if (validWallet(input)) {
       setAddress(input);
@@ -15,7 +16,7 @@ const WalletInfoCard = ({ address, setAddress }) => {
 
   return (
     <div className="flex justify-center items-center w-full h-full bg-white shadow-lg rounded-lg">
-      <div className="block p-1">
+      <div className="block m-4">
         <h3 className="text-gray-900 text-xl leading-tight font-medium mb-5 text-center">
           Change Wallet Address
         </h3>
@@ -44,7 +45,7 @@ const WalletInfoCard = ({ address, setAddress }) => {
             rounded
             transition
             ease-in-out
-            mb-10
+            mb-5
             focus:text-gray-700 focus:bg-white focus:outline-none
         "
             id="exampleText0"
@@ -58,7 +59,7 @@ const WalletInfoCard = ({ address, setAddress }) => {
   px-6
   py-2.5
   mx-20
-  peer-invalid:invisible
+  peer-invalid:hidden
   bg-blue-600
   text-white
   font-medium

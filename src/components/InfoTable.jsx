@@ -2,10 +2,14 @@ import Table from "./Table";
 import BalanceCard from "./BalanceCard";
 import WalletInfoCard from "./WalletInfoCard";
 import LineChart from "./LineChart";
+import { useState } from "react";
+import LoadingWheel from "./LoadingWheel";
 
 let etherIndex;
 
 const InfoTable = ({ address, setAddress, balanceData }) => {
+  const [loading, setLoading] = useState(false);
+
   if (balanceData) {
     const items = balanceData.data.items;
     let tableItems = [];
@@ -14,9 +18,12 @@ const InfoTable = ({ address, setAddress, balanceData }) => {
       let decimals = items[item].contract_decimals;
       if (items[item].contract_name === "Ether") {
         etherIndex = item;
-        weeklyItems.push({ // Only gets most recent day, need all timestamps for object
+        weeklyItems.push({
+          // Only gets most recent day, need all timestamps for object
           date: items[item].holdings[etherIndex].timestamp,
-          balance: items[item].holdings[etherIndex].close.balance / Math.pow(10, decimals)
+          balance:
+            items[item].holdings[etherIndex].close.balance /
+            Math.pow(10, decimals),
         });
       }
       tableItems.push({
@@ -24,23 +31,34 @@ const InfoTable = ({ address, setAddress, balanceData }) => {
         balance: items[item].holdings[0].close.balance / Math.pow(10, decimals),
         quote: items[item].holdings[0].close.quote,
       });
-      
     }
     console.log(weeklyItems);
 
-    return (
-      <div className="flex flex-col justify-center items-center overflow-y-auto">
-        <div className="grid grid-cols-2 gap-10">
-          <BalanceCard
-            balance={tableItems[etherIndex].balance}
-            quote={tableItems[etherIndex].quote}
-          />
-          <WalletInfoCard address={address} setAddress={setAddress} />
+    if (loading) {
+      return (
+        <div className="flex justify-center">
+          <LoadingWheel />
         </div>
+      );
+    } else {
+      return (
+        <div className="flex flex-col justify-center items-center overflow-y-auto">
+          <div className="grid grid-cols-2 gap-10">
+            <BalanceCard
+              balance={tableItems[etherIndex].balance}
+              quote={tableItems[etherIndex].quote}
+            />
+            <WalletInfoCard
+              address={address}
+              setAddress={setAddress}
+              setLoading={setLoading}
+            />
+          </div>
           <LineChart />
           <Table data={tableItems} />
-      </div>
-    );
+        </div>
+      );
+    }
   }
 };
 
