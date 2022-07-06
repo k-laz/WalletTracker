@@ -22,18 +22,16 @@ const InfoTable = ({ address, setAddress, balanceData }) => {
     }
 
     return (
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center overflow-y-auto">
         <div className="grid grid-cols-2 gap-10">
           <BalanceCard
             balance={tableItems[etherIndex].balance}
             quote={tableItems[etherIndex].quote}
           />
           <WalletInfoCard address={address} setAddress={setAddress} />
-          <Table data={tableItems} />
-          <div className="max-w-20">
-            <LineChart />
-          </div>
         </div>
+          <LineChart />
+          <Table data={tableItems} />
       </div>
     );
   }

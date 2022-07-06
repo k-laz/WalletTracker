@@ -15,8 +15,8 @@ const Table = ({ data }) => {
 
   if (data) {
     return (
-      <div className="flex flex-col max-h-[14rem]">
-        <div className="overflow-y-auto sm:-mx-6 lg:-mx-8 scroll-smooth">
+      <div className="flex flex-col max-h-[10.5rem]">
+        <div className="">
           <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
             <table className="min-w-full">
               <thead className="bg-white border-b text-xl">

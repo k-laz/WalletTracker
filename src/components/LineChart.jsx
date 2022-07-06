@@ -21,18 +21,23 @@ ChartJS.register(
   Legend
 );
 
+function daysOfWeek (input) {
+  var curr = new Date(); // get current date
+  var first = curr.getDate() // First day is the day of the month - the day of the week
+  var date = new Date(curr.setDate(first + input)).toLocaleDateString("en-US");
+  return date
+}
+
 const LineChart = () => {
-  const current = new Date();
-  const date = `${current.getDate()}/${
-    current.getMonth() + 1
-    }/${current.getFullYear()}`;
+
     const labels = [
-    date,
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
+    daysOfWeek(-6),
+    daysOfWeek(-5),
+    daysOfWeek(-4),
+    daysOfWeek(-3),
+    daysOfWeek(-2),
+    daysOfWeek(-1),
+    daysOfWeek(0),
   ];
 
   const data = {
@@ -62,7 +67,11 @@ const LineChart = () => {
     },
   };
 
-  return <Line options={options} data={data} />;
+  return (
+  <div className=""> 
+    <Line options={options} data={data} />
+  </div>
+  )
 };
 
 export default LineChart;
