@@ -1,6 +1,6 @@
 const Table = ({ data }) => {
   const Row = ({ key, contract, balance, quote }) => (
-    <tr className="bg-white border-b overflow-y-auto">
+    <tr className="bg-white border-b overflow-y-auto max-h-20">
       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
         {key}
       </td>
@@ -18,7 +18,7 @@ const Table = ({ data }) => {
 
   if (data) {
     return (
-      <div className="flex flex-col">
+      <div className="flex flex-col max-h-[14rem]">
         <div className="overflow-y-auto sm:-mx-6 lg:-mx-8 scroll-smooth">
           <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
               <table className="min-w-full">
