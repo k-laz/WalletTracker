@@ -67,7 +67,7 @@ const LineChart = () => {
   };
 
   return (
-    <div className="">
+    <div className="flex justify-center items-center w-full h-full bg-white shadow-lg rounded-lg text-xl">
       <Line options={options} data={data} />
     </div>
   );

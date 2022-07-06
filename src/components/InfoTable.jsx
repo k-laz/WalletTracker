@@ -45,7 +45,7 @@ const InfoTable = ({ address, setAddress, balanceData }) => {
     } else {
       return (
         <div className="flex flex-col justify-center items-center overflow-y-auto">
-          <div className="grid grid-cols-2 gap-10">
+          <div className="grid grid-cols-2 gap-5">
             <BalanceCard
               balance={tableItems[etherIndex].balance}
               quote={tableItems[etherIndex].quote}
@@ -55,9 +55,9 @@ const InfoTable = ({ address, setAddress, balanceData }) => {
               setAddress={setAddress}
               setLoading={setLoading}
             />
+            <LineChart />
+            <Table data={tableItems} />
           </div>
-          <LineChart />
-          <Table data={tableItems} />
         </div>
       );
     }
