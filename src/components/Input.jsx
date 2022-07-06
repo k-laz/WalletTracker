@@ -24,7 +24,7 @@ const Input = ({ setAddress, hasError }) => {
     );
   } else {
     return (
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center h-screen">
         <p className="font-mono text-2xl xl:text-4xl mb-20 text-center ">
           Welcome to Wallet Tracker
         </p>
