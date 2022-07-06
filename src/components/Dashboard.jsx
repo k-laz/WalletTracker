@@ -5,6 +5,7 @@ import Input from "./Input";
 const Dashboard = () => {
   const [address, setAddress] = useState(null);
   const [balanceData, setBalanceData] = useState(null);
+  const [hasError, setHasError] = useState(false);
   const api_key = process.env.REACT_APP_COVALENT_API_KEY;
 
   useEffect(() => {
@@ -18,6 +19,8 @@ const Dashboard = () => {
       )
         .then((response) => {
           if (!response.ok) {
+            //TODO: send user an error message! fix the error message etc
+            setHasError(true);
             throw new Error("Network response was not OK");
           }
           return response.json();
@@ -34,7 +37,7 @@ const Dashboard = () => {
     }
   }, [address, api_key]);
 
-  if (address && balanceData) {
+  if (address && balanceData && !hasError) {
     return (
       <InfoTable
         address={address}
@@ -43,7 +46,7 @@ const Dashboard = () => {
       />
     );
   } else {
-    return <Input address={address} setAddress={setAddress} />;
+    return <Input address={address} setAddress={setAddress} error={hasError} />;
   }
 };
 
