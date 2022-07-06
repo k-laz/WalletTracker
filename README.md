@@ -17,6 +17,7 @@ Are you a crypto enthusiast and want to see what celebrities are buying in real 
 * [React.js](https://reactjs.org/)
 * [JavaScript](https://www.javascript.com/)
 * [Covalent API](https://www.covalenthq.com/docs/api/#/)
+* [Chart.js](https://www.chartjs.org/)
 
 View project demo on [YouTube](https://youtu.be/Q0yuIUShX90)
 
