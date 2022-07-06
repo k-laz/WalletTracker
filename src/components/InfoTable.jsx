@@ -1,6 +1,7 @@
 import Table from "./Table";
 import BalanceCard from "./BalanceCard";
 import WalletInfoCard from "./WalletInfoCard";
+import LineChart from "./LineChart";
 
 let etherIndex;
 
@@ -23,17 +24,14 @@ const InfoTable = ({ address, setAddress, balanceData }) => {
     return (
       <div className="flex flex-col justify-center items-center">
         <div className="grid grid-cols-2 gap-10">
-          <div>
-            <BalanceCard
-              balance={tableItems[etherIndex].balance}
-              quote={tableItems[etherIndex].quote}
-            />
-          </div>
-          <div>
-            <WalletInfoCard address={address} setAddress={setAddress} />
-          </div>
-          <div className="col-span-2">
-            <Table data={tableItems} />
+          <BalanceCard
+            balance={tableItems[etherIndex].balance}
+            quote={tableItems[etherIndex].quote}
+          />
+          <WalletInfoCard address={address} setAddress={setAddress} />
+          <Table data={tableItems} />
+          <div className="max-w-20">
+            <LineChart />
           </div>
         </div>
       </div>
