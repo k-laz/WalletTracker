@@ -1,7 +1,7 @@
 const Table = ({ data }) => {
   const Row = ({ contract, balance, quote }) => (
-    <tr className="bg-white border-b overflow-y-auto max-h-20">
-      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+    <tr className="bg-white border-b">
+      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-wrap">
         {contract}
       </td>
       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -15,11 +15,11 @@ const Table = ({ data }) => {
 
   if (data) {
     return (
-      <div className="flex flex-col max-h-[10.5rem]">
-        <div className="">
-          <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-            <table className="min-w-full">
-              <thead className="bg-white border-b text-xl">
+      <div className="max-h-[20rem] rounded-lg overflow-y-auto">
+        <div className="flex w-full h-full bg-white shadow-lg rounded-lg text-xl">
+          <div className="rounded-lg">
+            <table className="rounded-lg">
+              <thead className="border-b text-xl rounded-lg">
                 <tr>
                   <th
                     scope="col"
