@@ -52,7 +52,7 @@ const Input = ({ setAddress, hasError }) => {
           placeholder="address input (ex: 0x...)"
         />
         <p className="invisible peer-invalid:visible text-red-500 text-center">
-          Please provide a valid etherium address.
+          Please provide a valid ETH address.
         </p>
         {loading && <LoadingWheel />}
         <button
