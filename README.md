@@ -11,14 +11,13 @@
 
 
 ## About
-Are you a crypto enthusiast and want to see what celebrities are buying in real time? This application is perfect for you! We have made WalletTracker, a simple web application used to track crypto wallets and their recent transactions, works with anyone’s wallet if you know their address. 
+Are you a crypto enthusiast and want to see what celebrities are buying in real time? This application is perfect for you! We have made WalletTracker, a simple web application used to track crypto wallets and their recent transactions, works with anyone’s ETH wallet if you know their address. 
 
 ## Built With
 * [React.js](https://reactjs.org/)
 * [JavaScript](https://www.javascript.com/)
 * [Covalent API](https://www.covalenthq.com/docs/api/#/)
-
-<img align="center" src="https://user-images.githubusercontent.com/56948805/167064016-a5ad27cf-13bf-478c-9973-be224c32c792.png" alt="logo2" width="400" height="250">
+* [Chart.js](https://www.chartjs.org/)
 
 View project demo on [YouTube](https://youtu.be/Q0yuIUShX90)
 
