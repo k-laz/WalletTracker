@@ -9,17 +9,24 @@ const InfoTable = ({ address, setAddress, balanceData }) => {
   if (balanceData) {
     const items = balanceData.data.items;
     let tableItems = [];
+    let weeklyItems = [];
     for (let item in items) {
+      let decimals = items[item].contract_decimals;
       if (items[item].contract_name === "Ether") {
         etherIndex = item;
+        weeklyItems.push({ // Only gets most recent day, need all timestamps for object
+          date: items[item].holdings[etherIndex].timestamp,
+          balance: items[item].holdings[etherIndex].close.balance / Math.pow(10, decimals)
+        });
       }
-      let decimals = items[item].contract_decimals;
       tableItems.push({
         contract_name: items[item].contract_name,
         balance: items[item].holdings[0].close.balance / Math.pow(10, decimals),
         quote: items[item].holdings[0].close.quote,
       });
+      
     }
+    console.log(weeklyItems);
 
     return (
       <div className="flex flex-col justify-center items-center overflow-y-auto">
