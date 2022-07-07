@@ -10,7 +10,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { faker } from "@faker-js/faker";
+// import { faker } from "@faker-js/faker";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -28,7 +28,10 @@ function daysOfWeek(input) {
   return date;
 }
 
-const LineChart = () => {
+const LineChart = ({ weeklyItems }) => {
+  let days = weeklyItems.slice(1, 100);
+  console.log(days);
+
   const labels = [
     daysOfWeek(-6),
     daysOfWeek(-5),
@@ -44,9 +47,7 @@ const LineChart = () => {
     datasets: [
       {
         label: "ETH",
-        data: labels.map(() =>
-          faker.datatype.number({ min: -1000, max: 1000 })
-        ),
+        data: days.map((day) => day.balance),
         borderColor: "rgb(255, 99, 132)",
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
@@ -65,11 +66,11 @@ const LineChart = () => {
         font: {
           family: "Arial",
           size: 16,
-          weight: "bold"
+          weight: "bold",
+        },
       },
-    }
-  }
-}
+    },
+  };
 
   return (
     <div className="flex justify-center items-center w-full h-full bg-white shadow-lg rounded-lg text-xl">

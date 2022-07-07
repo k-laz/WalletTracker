@@ -2,18 +2,14 @@ import Table from "./Table";
 import BalanceCard from "./BalanceCard";
 import WalletInfoCard from "./WalletInfoCard";
 import LineChart from "./LineChart";
-import { useState } from "react";
-import LoadingWheel from "./LoadingWheel";
 
 let etherIndex;
-let weeklyItems = [];
 
-const InfoTable = ({ address, setAddress, balanceData }) => {
-  const [loading, setLoading] = useState(false);
-
+const InfoTable = ({ address, setAddress, balanceData, error }) => {
+  let tableItems = [];
+  let weeklyItems = [];
   if (balanceData) {
     const items = balanceData.data.items;
-    let tableItems = [];
 
     for (let item in items) {
       let decimals = items[item].contract_decimals;
@@ -27,6 +23,7 @@ const InfoTable = ({ address, setAddress, balanceData }) => {
               items[item].holdings[x].close.balance / Math.pow(10, decimals),
           });
         }
+        // console.log(weeklyItems);
       }
       tableItems.push({
         contract_name: items[item].contract_name,
@@ -34,33 +31,24 @@ const InfoTable = ({ address, setAddress, balanceData }) => {
         quote: items[item].holdings[0].close.quote,
       });
     }
-    console.log(weeklyItems);
 
-    if (loading) {
-      return (
-        <div className="flex justify-center">
-          <LoadingWheel />
+    return (
+      <div className="flex flex-col justify-center items-center overflow-y-auto">
+        <div className="grid md:grid-cols-2 gap-5 px-5">
+          <BalanceCard
+            balance={tableItems[etherIndex].balance}
+            quote={tableItems[etherIndex].quote}
+          />
+          <WalletInfoCard
+            address={address}
+            setAddress={setAddress}
+            error={error}
+          />
+          <LineChart weeklyItems={weeklyItems} />
+          <Table data={tableItems} />
         </div>
-      );
-    } else {
-      return (
-        <div className="flex flex-col justify-center items-center overflow-y-auto">
-          <div className="grid md:grid-cols-2 gap-5 px-5">
-            <BalanceCard
-              balance={tableItems[etherIndex].balance}
-              quote={tableItems[etherIndex].quote}
-            />
-            <WalletInfoCard
-              address={address}
-              setAddress={setAddress}
-              setLoading={setLoading}
-            />
-            <LineChart />
-            <Table data={tableItems} />
-          </div>
-        </div>
-      );
-    }
+      </div>
+    );
   }
 };
 

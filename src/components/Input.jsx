@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { validWallet } from "../tools/WalletValidator";
+import { useSelector, useDispatch } from "react-redux";
+import { start } from "../slices/loadingSlice";
 import LoadingWheel from "./LoadingWheel";
 
-const Input = ({ setAddress, hasError }) => {
+const Input = ({ address, setAddress, error }) => {
   const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.loading.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
+    dispatch(start());
     if (validWallet(input)) {
       setAddress(input);
     } else {
@@ -28,7 +31,9 @@ const Input = ({ setAddress, hasError }) => {
         <p className="font-mono text-2xl xl:text-4xl mb-20 text-center ">
           Welcome to Wallet Tracker
         </p>
-        {hasError && <h1>There is an error</h1>}
+        {error && (
+          <h1 className="text-red-500 text-center">Address was not found!</h1>
+        )}
         <form className="flex flex-col justify-center items-center mb-3 xl:w-96">
           <input
             type="text"
