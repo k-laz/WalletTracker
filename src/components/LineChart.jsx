@@ -28,7 +28,10 @@ function daysOfWeek(input) {
   return date;
 }
 
-const LineChart = () => {
+const LineChart = ({ weeklyItems }) => {
+  let days = weeklyItems.slice(1, 100);
+  console.log(days);
+
   const labels = [
     daysOfWeek(-6),
     daysOfWeek(-5),
@@ -44,7 +47,9 @@ const LineChart = () => {
     datasets: [
       {
         label: "ETH",
-        data: [20, 30, 40, 20, 50, 60, 40],
+
+        data: days.map((day) => day.balance),
+
         borderColor: "rgb(255, 99, 132)",
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
@@ -63,11 +68,11 @@ const LineChart = () => {
         font: {
           family: "Arial",
           size: 16,
-          weight: "bold"
+          weight: "bold",
+        },
       },
-    }
-  }
-}
+    },
+  };
 
   return (
     <div className="flex justify-center items-center w-full h-full bg-white shadow-lg rounded-lg text-xl">

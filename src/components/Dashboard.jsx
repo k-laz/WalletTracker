@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import InfoTable from "./InfoTable";
 import Input from "./Input";
+import { useDispatch } from "react-redux";
+import { stop } from "../slices/loadingSlice";
 
 const Dashboard = () => {
   const [address, setAddress] = useState(null);
   const [balanceData, setBalanceData] = useState(null);
   const [hasError, setHasError] = useState(false);
   const api_key = process.env.REACT_APP_COVALENT_API_KEY;
-
+  const dispatch = useDispatch();
   useEffect(() => {
     if (!address) return;
 
@@ -26,23 +28,28 @@ const Dashboard = () => {
           return response.json();
         })
         .then((json) => {
+          dispatch(stop());
+          setHasError(false);
           setBalanceData(json);
         })
         .catch((error) => {
+          dispatch(stop());
+          setHasError(true);
           console.error(
             "There has been a problem with your fetch operation: ",
             error
           );
         });
     }
-  }, [address, api_key]);
+  }, [address, api_key, dispatch]);
 
-  if (address && balanceData && !hasError) {
+  if (address && balanceData) {
     return (
       <InfoTable
         address={address}
         setAddress={setAddress}
         balanceData={balanceData}
+        error={hasError}
       />
     );
   } else {
