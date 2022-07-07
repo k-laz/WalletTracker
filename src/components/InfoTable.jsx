@@ -5,6 +5,9 @@ import LineChart from "./LineChart";
 
 let etherIndex;
 
+const InfoTable = ({ address, setAddress, balanceData }) => {
+  const [loading, setLoading] = useState(false);
+
 const InfoTable = ({ address, setAddress, balanceData, error }) => {
   let tableItems = [];
   let weeklyItems = [];
@@ -17,13 +20,14 @@ const InfoTable = ({ address, setAddress, balanceData, error }) => {
         etherIndex = item;
         let temp = items[item].holdings;
         for (let x in temp) {
+          
           weeklyItems.push({
             date: items[item].holdings[x].timestamp,
             balance:
               items[item].holdings[x].close.balance / Math.pow(10, decimals),
           });
         }
-        // console.log(weeklyItems);
+
       }
       tableItems.push({
         contract_name: items[item].contract_name,
@@ -31,6 +35,7 @@ const InfoTable = ({ address, setAddress, balanceData, error }) => {
         quote: items[item].holdings[0].close.quote,
       });
     }
+
 
     return (
       <div className="flex flex-col justify-center items-center overflow-y-auto">
