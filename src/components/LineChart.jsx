@@ -61,10 +61,15 @@ const LineChart = () => {
       },
       title: {
         display: true,
-        text: "Daily Transaction Volume",
+        text: "Weekly Transaction Volume",
+        font: {
+          family: "Arial",
+          size: 16,
+          weight: "bold"
       },
-    },
-  };
+    }
+  }
+}
 
   return (
     <div className="flex justify-center items-center w-full h-full bg-white shadow-lg rounded-lg text-xl">
