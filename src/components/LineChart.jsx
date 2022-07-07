@@ -10,7 +10,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { faker } from "@faker-js/faker";
+// import { faker } from "@faker-js/faker";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -44,9 +44,7 @@ const LineChart = () => {
     datasets: [
       {
         label: "ETH",
-        data: labels.map(() =>
-          faker.datatype.number({ min: -1000, max: 1000 })
-        ),
+        data: [20, 30, 40, 20, 50, 60, 40],
         borderColor: "rgb(255, 99, 132)",
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
