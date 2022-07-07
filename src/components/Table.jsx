@@ -1,6 +1,6 @@
 const Table = ({ data }) => {
   const Row = ({ contract, balance, quote }) => (
-    <tr className="bg-white border-b">
+    <tr className="bg-white border-b overflow-y-auto">
       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-wrap">
         {contract}
       </td>
@@ -15,8 +15,8 @@ const Table = ({ data }) => {
 
   if (data) {
     return (
-      <div className="max-h-[20rem] rounded-lg overflow-y-auto">
-        <div className="flex w-full h-full bg-white shadow-lg rounded-lg text-xl">
+      <div className="max-h-[30rem] rounded-lg overflow-y-auto">
+        <div className="flex w-full h-full bg-white shadow-lg rounded-lg text-xl justify-center">
           <div className="rounded-lg">
             <table className="rounded-lg">
               <thead className="border-b text-xl rounded-lg">
