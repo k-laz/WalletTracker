@@ -21,7 +21,7 @@ Are you a crypto enthusiast and want to see what celebrities are buying in real 
 
 View project demo on [YouTube](https://youtu.be/Q0yuIUShX90)
 
-Live demo on [Netlify](https://k-laz.github.io/WalletTracker)
+Live demo on [Github Pages](https://k-laz.github.io/WalletTracker)
 
 ## Contributors
 * [Kirill Lazarev](https://github.com/k-laz)
