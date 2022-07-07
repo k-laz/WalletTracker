@@ -25,19 +25,19 @@ const Table = ({ data }) => {
                     scope="col"
                     className="font-medium text-gray-900 px-6 py-4 text-left"
                   >
-                    Contract
+                    Contract Name
                   </th>
                   <th
                     scope="col"
                     className="font-medium text-gray-900 px-6 py-4 text-left"
                   >
-                    Balance
+                    Balance (ETH)
                   </th>
                   <th
                     scope="col"
                     className="font-medium text-gray-900 px-6 py-4 text-left"
                   >
-                    Quote
+                    Quote (USD)
                   </th>
                 </tr>
               </thead>
