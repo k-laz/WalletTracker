@@ -6,7 +6,6 @@ import { useState } from "react";
 import LoadingWheel from "./LoadingWheel";
 
 let etherIndex;
-let weeklyItems = [];
 
 const InfoTable = ({ address, setAddress, balanceData }) => {
   const [loading, setLoading] = useState(false);
@@ -14,6 +13,7 @@ const InfoTable = ({ address, setAddress, balanceData }) => {
   if (balanceData) {
     const items = balanceData.data.items;
     let tableItems = [];
+    let weeklyItems = [];
 
     for (let item in items) {
       let decimals = items[item].contract_decimals;
@@ -21,12 +21,14 @@ const InfoTable = ({ address, setAddress, balanceData }) => {
         etherIndex = item;
         let temp = items[item].holdings;
         for (let x in temp) {
+          
           weeklyItems.push({
             date: items[item].holdings[x].timestamp,
             balance:
               items[item].holdings[x].close.balance / Math.pow(10, decimals),
           });
         }
+        console.log(weeklyItems);
       }
       tableItems.push({
         contract_name: items[item].contract_name,
@@ -34,7 +36,7 @@ const InfoTable = ({ address, setAddress, balanceData }) => {
         quote: items[item].holdings[0].close.quote,
       });
     }
-    console.log(weeklyItems);
+    
 
     if (loading) {
       return (
