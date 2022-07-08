@@ -2,6 +2,7 @@
   "name": "WalletTracker",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://gitname.github.io/react-gh-pages",
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
@@ -24,6 +25,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test --passWithNoTests",
     "eject": "react-scripts eject"
   },
@@ -49,6 +52,7 @@
     "@faker-js/faker": "^7.3.0",
     "autoprefixer": "^10.4.7",
     "dotenv": "^16.0.1",
+    "gh-pages": "^4.0.0",
     "mini-css-extract-plugin": "2.4.5",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.0.24"
