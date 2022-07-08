@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.9a30e39f.css",
-    "main.js": "/react-gh-pages/static/js/main.fd8b656a.js",
-    "index.html": "/react-gh-pages/index.html",
-    "main.9a30e39f.css.map": "/react-gh-pages/static/css/main.9a30e39f.css.map",
-    "main.fd8b656a.js.map": "/react-gh-pages/static/js/main.fd8b656a.js.map"
+    "main.css": "/WalletTracker/static/css/main.9a30e39f.css",
+    "main.js": "/WalletTracker/static/js/main.fd8b656a.js",
+    "index.html": "/WalletTracker/index.html",
+    "main.9a30e39f.css.map": "/WalletTracker/static/css/main.9a30e39f.css.map",
+    "main.fd8b656a.js.map": "/WalletTracker/static/js/main.fd8b656a.js.map"
   },
   "entrypoints": [
     "static/css/main.9a30e39f.css",
