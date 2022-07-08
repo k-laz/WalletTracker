@@ -19,9 +19,9 @@ Are you a crypto enthusiast and want to see what celebrities are buying in real 
 * [Covalent API](https://www.covalenthq.com/docs/api/#/)
 * [Chart.js](https://www.chartjs.org/)
 
-View project demo on [YouTube](https://youtu.be/Q0yuIUShX90)
+View project demo on [YouTube (old)](https://youtu.be/Q0yuIUShX90) 
 
-Live demo on [Netlify](https://cryptowallettracker.netlify.app/)
+Live demo on [Github Pages](https://k-laz.github.io/WalletTracker)
 
 ## Contributors
 * [Kirill Lazarev](https://github.com/k-laz)
